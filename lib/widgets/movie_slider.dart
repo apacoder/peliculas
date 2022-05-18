@@ -6,16 +6,17 @@ class MoviesSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 260,
+      height: 255,
+      // color: Colors.red,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
           const Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.only(left: 10, bottom: 5),
             child: Text(
               'Populares',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
           Expanded(
@@ -25,7 +26,6 @@ class MoviesSlider extends StatelessWidget {
               itemBuilder: (_, index) => const _MoviePoster(),
             ),
           ),
-          const SizedBox(height: 10)
         ],
       ),
     );
@@ -39,10 +39,38 @@ class _MoviePoster extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const FadeInImage(
-      placeholder: AssetImage('assets/no-image.jpg'),
-      image: NetworkImage('https://via.placeholder.com/190x190'),
-      fit: BoxFit.cover,
+    return Container(
+      width: 130,
+      height: 190,
+      // color: Colors.green,
+      margin: const EdgeInsets.only(left: 10),
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () => Navigator.pushNamed(
+              context,
+              'details',
+              arguments: 'movie-instance',
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: const FadeInImage(
+                placeholder: AssetImage('assets/no-image.jpg'),
+                image: NetworkImage('https://via.placeholder.com/300x400'),
+                width: 130,
+                height: 190,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const SizedBox(height: 5),
+          const Text(
+            'StarWars: El retorno de el mero mero de Monte Cristo',
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+          )
+        ],
+      ),
     );
   }
 }

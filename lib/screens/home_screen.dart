@@ -21,7 +21,11 @@ class HomesScreen extends StatelessWidget {
               CardSwipper(),
               // TODO: Listado horizontal de películas
               MoviesSlider(),
+              SizedBox(height: 20),
               MoviesSlider(),
+              SizedBox(height: 20),
+              MoviesSlider(),
+              SizedBox(height: 20),
               MoviesSlider(),
             ],
           ),
