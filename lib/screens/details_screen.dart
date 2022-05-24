@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
   //TODO: cambiar luego por una instancia de movie
@@ -15,6 +16,10 @@ class DetailsScreen extends StatelessWidget {
             delegate: SliverChildListDelegate(
               [
                 const _PosterAndTittle(),
+                _Overview(),
+                _Overview(),
+                _Overview(),
+                const CastingCards()
               ],
             ),
           ),
@@ -36,6 +41,7 @@ class _CustomAppBar extends StatelessWidget {
         centerTitle: true,
         titlePadding: const EdgeInsets.all(0),
         title: Container(
+          padding: const EdgeInsets.only(bottom: 20),
           width: double.infinity,
           alignment: Alignment.bottomCenter,
           child: const Text('movie.tittle'),
@@ -62,7 +68,6 @@ class _PosterAndTittle extends StatelessWidget {
       margin: const EdgeInsets.only(top: 20),
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(20),
@@ -100,6 +105,20 @@ class _PosterAndTittle extends StatelessWidget {
             ],
           )
         ],
+      ),
+    );
+  }
+}
+
+class _Overview extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      child: Text(
+        'Occaecat elit non dolore tempor labore aute. Id exercitation in culpa quis commodo duis dolore sint in sint aliquip eiusmod consequat. Fugiat cillum voluptate minim sint ipsum ullamco culpa nulla eu eiusmod. Enim sint nostrud aliqua eiusmod ullamco ea anim cillum nisi ad laborum voluptate. Duis mollit pariatur anim amet consectetur ipsum pariatur consectetur Lorem.',
+        textAlign: TextAlign.justify,
+        style: Theme.of(context).textTheme.subtitle1,
       ),
     );
   }
