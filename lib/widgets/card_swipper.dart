@@ -11,8 +11,8 @@ class CardSwipper extends StatelessWidget {
       width: double.infinity,
       height: 300,
       child: Swiper(
-        itemCount: 10,
-        layout: SwiperLayout.STACK,
+        itemCount: 6,
+        layout: SwiperLayout.DEFAULT,
         itemWidth: size.width * 0.5,
         itemHeight: 280,
         itemBuilder: (_, int index) {
@@ -20,10 +20,9 @@ class CardSwipper extends StatelessWidget {
             onTap: () => Navigator.pushNamed(context, 'details'),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(10),
-              child: const FadeInImage(
-                placeholder: AssetImage('assets/no-image.jpg'),
-                image: NetworkImage('https://via.placeholder.com/600x800'),
-                fit: BoxFit.cover,
+              child: FadeInImage(
+                placeholder: const AssetImage('assets/no-image.jpg'),
+                image: AssetImage('assets/pk/00${index + 1}.png'),
               ),
             ),
           );
